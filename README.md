@@ -35,9 +35,14 @@ Claude өөрөө суулгана. Дараа нь `/reload-plugins` гэж б�
 /plugin install goat-digicam@goat-digicam
 ```
 
+**Zip файлаар авсан бол:**
+1. `goat-digicam.zip`-ийг задална. Задалсан `goat-digicam` хавтсаа устгалгүй үлдээгээрэй.
+2. Claude Code-д "Энэ хавтсан дахь plugin-ийг суулгаад өг:" гэж бичээд задалсан `goat-digicam` хавтсаа чирж оруулна.
+3. `/reload-plugins` гэж бичнэ.
+
 **Шинэ хувилбар гарвал:** Claude-д "goat-digicam plugin-ийг шинэчил" гэж хэлэхэд болно.
 
-> **For Claude Code:** to install this plugin, run `claude plugin marketplace add SaagiiSG/goat-digicam` and then `claude plugin install goat-digicam@goat-digicam`, then tell the user to type `/reload-plugins`. To update it: `claude plugin marketplace update goat-digicam` and then `claude plugin update goat-digicam@goat-digicam`.
+> **For Claude Code:** to install this plugin, run `claude plugin marketplace add SaagiiSG/goat-digicam` (or, from an unzipped copy, `claude plugin marketplace add <path to the goat-digicam folder>`) and then `claude plugin install goat-digicam@goat-digicam`, then tell the user to type `/reload-plugins`. To update it: `claude plugin marketplace update goat-digicam` and then `claude plugin update goat-digicam@goat-digicam`.
 
 ---
 
