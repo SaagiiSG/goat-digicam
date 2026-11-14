@@ -1,5 +1,7 @@
 # 🐐 Y2K Digicam Flash · Флаш камер
 
+<p align="center"><img src="assets/poster.jpg" width="300" alt="Y2K Digicam Flash · Флаш камер"></p>
+
 **Claude Code дотор ажилладаг видео эдитийн skill.** Бичлэгийг 2000-аад оны жижиг дижитал камераар авсан мэт болгоно: хурц флаш, тод өнгө, бүдүүн пиксел, буланд улбар шар огноо.
 
 Reels, TikTok-д бэлэн 1080×1920 MP4 гаргана. GOAT Academy-гийн 14 эдитийн стилийн нэг.
