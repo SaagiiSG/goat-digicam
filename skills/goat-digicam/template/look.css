@@ -1,0 +1,18 @@
+@font-face { font-family: "Oswald"; src: url("fonts/Oswald%5Bwght%5D.ttf"); font-weight: 200 700; }
+@font-face { font-family: "DSEG7"; src: url("fonts/DSEG7Classic-Bold.ttf"); }
+
+html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+#root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+
+/* The footage, full screen. The punch scales this box; HyperFrames swaps the video for a frame <img>
+   inside it, which inherits image-rendering, so the 480x852 sensor pixels stay hard-edged when zoomed. */
+#zoom { position: absolute; inset: 0; transform-origin: 50% 50%; image-rendering: pixelated; }
+#clip { display: block; width: 1080px; height: 1920px; image-rendering: pixelated; }
+#flash { position: absolute; inset: 0; background: #fff; opacity: 0; }
+
+/* preview: Oswald 600 66px/1.1, white with a soft dark glow, left 11.1% */
+#captions > div { position: absolute; left: 120px; top: 0; white-space: nowrap; opacity: 0;
+  font: 600 66px/1.1 "Oswald", sans-serif; color: #fff; text-shadow: 0 0 10px rgba(0, 0, 0, 0.45); }
+/* preview: DSEG7 54px, orange with its own glow, letter-spacing 0.06em; right edge on the safe line x 960 */
+#date { position: absolute; right: 120px; top: 0; white-space: nowrap;
+  font: 54px/1 "DSEG7", monospace; letter-spacing: 0.06em; color: #FF8A1C; text-shadow: 0 0 5px rgba(255, 138, 28, 0.85); }
