@@ -14,6 +14,8 @@ Talk to the user in the language they write in (usually Mongolian). Keep message
 
 ## 1. Setup check (first time on a machine)
 
+**Every new video, first:** run `claude plugin marketplace update goat-digicam`, then `claude plugin update goat-digicam@goat-digicam`. If it installs a new version, tell the user a new version was installed and ask them to type `/reload-plugins` before you go on. If either command fails (offline, or installed from a zip), carry on and don't mention it.
+
 Run `node --version` (needs 22 or newer) and `ffmpeg -version`. If either is missing, show the install command and ask before installing (it is their computer):
 - Mac: `brew install node ffmpeg`
 - Windows: `winget install OpenJS.NodeJS.LTS` and `winget install Gyan.FFmpeg`, then close and reopen the terminal.
@@ -28,7 +30,7 @@ The captions here are words the user writes, not speech, so this look needs no s
 
 Make `raw/` and `output/` in the current folder. Ask for:
 1. **The clips.** Drag them into the chat or copy them into `raw/`. Best filmed with the phone flash on, close up, indoors or at night. Photos work too.
-2. **The words:** one or two short captions (e.g. "Хумсны шинэ загвар", or a price and phone number). Never invent a price or phone number. Ask.
+2. **The words:** one or two short captions (e.g. "Хумсны шинэ загвар", or the price and phone number the user gave). Never invent a price or phone number. Ask.
 
 If this folder was already edited with `goat-video-editor`, use `output/cut.mp4` as the clip.
 
@@ -48,9 +50,9 @@ Write `plan.json` in the project folder (paths are relative to it):
   ],
   "texts": [
     {"role": "caption", "text": "Хумсны шинэ загвар", "start": 0, "end": 3.6},
-    {"role": "caption", "text": "Үйлчилгээ 35 000₮\n9911-2233", "start": 3.8}
+    {"role": "caption", "text": "Хумсны үйлчилгээ\nЦаг захиалга нээлттэй", "start": 3.8}
   ],
-  "look": {"date": "11 12 26", "punch": true}
+  "look": {"punch": true}
 }
 ```
 
@@ -74,7 +76,7 @@ Each caption shows from `start` to `end` (default: the end of the video).
 **The first frame is the Reels thumbnail.** Give the first caption `"start": 0`: it is then already there on frame 0, over the first shot (frame 0 never flashes). Start on a shot worth seeing.
 
 **look** options:
-- `date`: the orange 7-segment date stamp, bottom right. Default: today's date as month day year, like `"11 14 26"`: the day the video is made, standing in for the day it was filmed. Write digits with spaces, dots, dashes or colons only (the font has no letters, no apostrophe and no slash). `false` hides it. The stamp is decoration and sits where the app's side buttons may partly cover it: never put a price or phone number in it.
+- `date`: the orange 7-segment date stamp, bottom right. Default: today's date as month, day and year, two digits each with a space between: the day the video is made, standing in for the day it was filmed. Write digits with spaces, dots, dashes or colons only (the font has no letters, no apostrophe and no slash). `false` hides it. The stamp is decoration and sits where the app's side buttons may partly cover it: never put a price or phone number in it.
 - `punch`: `true` (default) zooms in 8% over 3 frames halfway through every shot of 1 s or longer and holds it to the cut, like a pocket camera's zoom button. `false` turns it off.
 
 **Auto sound effects** (soft, so they sit under the clips' own sound; raise them with `"sfx": {"volume": 1.5}`): a camera shutter on every white flash, and with `"punch": true` a small click as each zoom punch hits.
@@ -117,6 +119,7 @@ Tell the user where the file is (`output/digicam.mp4`) and that it is ready to p
 
 ## Rules
 
+- Every word and graphic on screen comes from what this video says or shows, or from what the user gave you. The examples in this file are only examples: never put them in a video. If the user hasn't given the words, ask.
 - Anything the viewer must read (price, phone, offer) goes in a `caption`, which sits inside the area no app buttons cover. Never in the date stamp. Never invent a price, phone number or date; ask.
 - Captions stay plain white: no colour, no pop or bounce.
 - Use only the fonts bundled in `SKILL_DIR/fonts` (Oswald has Ө ө Ү ү and ₮; DSEG7 is digits only, for the date). Don't swap in other fonts. Emoji and symbols such as ★ can't be drawn.
