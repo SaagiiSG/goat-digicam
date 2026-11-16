@@ -79,7 +79,7 @@ Each caption shows from `start` to `end` (default: the end of the video).
 - `date`: the orange 7-segment date stamp, bottom right. Default: today's date as month, day and year, two digits each with a space between: the day the video is made, standing in for the day it was filmed. Write digits with spaces, dots, dashes or colons only (the font has no letters, no apostrophe and no slash). `false` hides it. The stamp is decoration and sits where the app's side buttons may partly cover it: never put a price or phone number in it.
 - `punch`: `true` (default) zooms in 8% over 3 frames halfway through every shot of 1 s or longer and holds it to the cut, like a pocket camera's zoom button. `false` turns it off.
 
-**Auto sound effects** (soft, so they sit under the clips' own sound; raise them with `"sfx": {"volume": 1.5}`): a camera shutter on every white flash, and with `"punch": true` a small click as each zoom punch hits.
+**Auto sound effects** (soft, so they sit under the clips' own sound; raise them with `"sfx": {"volume": 1.5}`): a camera shutter on the white flashes, and with `"punch": true` a small click as each zoom punch hits. Never two within 0.5 s, so flashes 1/3 s apart click on every other one.
 
 **Timing:** shots of 1–2.5 s read best. Every cut flashes white, fading over 0.2 s, but never more than 3 flashes a second (seizure safety): a cut less than 1/3 s after the last flash gets none, so only very fast cutting skips some. Shots under 1 s get no zoom punch.
 

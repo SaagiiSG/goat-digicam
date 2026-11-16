@@ -86,12 +86,14 @@ export async function prepare(ctx) {
   };
 }
 
-// Soft on purpose (Saagii, 14 Nov: "tone down"; v1 played the shutter at 1.0 and the click at 0.7);
-// members raise them with "sfx": {"volume": …}.
+// About 30% of v1's levels (shutter 1.0, click 0.7; Saagii, 16 Nov: "bring the sounds effects down a bit"); members
+// raise them with "sfx": {"volume": …}. Never two within 0.5 s: flashes 1/3 s apart click the shutter on every other
+// one, and a click gives way to a shutter (only a punch in a shot a frame under 1 s can come that close).
 export function sfx(plan, ctx) {
-  const cuts = ctx.cuts.length ? ctx.cuts : [0];
+  const cuts = ctx.cuts.length ? ctx.cuts : [0], shutters = GOAT.spaced(flashTimes(cuts), 0.5);
   return [
-    ...flashTimes(cuts).map((at) => ({ sound: "shutter", at, volume: 0.5 })),
-    ...punches(cuts, ctx.dur, plan.look?.punch !== false).map((p) => ({ sound: "click", at: p.at, volume: 0.35 })),
+    ...shutters.map((at) => ({ sound: "shutter", at, volume: 0.3 })),
+    ...punches(cuts, ctx.dur, plan.look?.punch !== false).filter((p) => shutters.every((s) => Math.abs(p.at - s) >= 0.5 - 1e-9))
+      .map((p) => ({ sound: "click", at: p.at, volume: 0.21 })),
   ];
 }
